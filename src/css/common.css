@@ -16,3 +16,12 @@ img {
   display: block;
   max-width: 100%;
 }
+.label {
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.timer {
+  align-items: center;
+  justify-content: space-between;
+}

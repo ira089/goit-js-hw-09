@@ -1,7 +1,7 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
-console.log('чаокакао');
+console.log('чаокака');
 const refs = {
   calendar: document.querySelector('#datetime-picker'),
   btnStart: document.querySelector('button[data-start]'),
@@ -11,15 +11,19 @@ const refs = {
   minutes: document.querySelector('span[data-minutes]'),
   seconds: document.querySelector('span[data-seconds]'),
 };
+refs.timer.style.display = 'flex';
+// refs.timer.style.backgroundColor = 'teal';
+
 // console.dir(refs.btnStart);
-// console.dir(refs.calendar);
-// console.dir(refs.timer);
-console.log(refs.days);
+// console.dir(refs.label);
+console.dir(refs.timer);
+// console.log(refs.days);
 
 const dateStart = new Date();
 console.log(dateStart);
 let ms = null;
 let selDate = null;
+refs.btnStart.disabled = true;
 
 const options = {
   enableTime: true,
@@ -32,12 +36,9 @@ const options = {
     console.log(selDate);
     if (selDate <= dateStart) {
       alert('Please choose a date in the future');
-      refs.btnStart.disabled = true;
     } else {
       refs.btnStart.disabled = false;
     }
-    // ms = selectedDates[0] - date;
-    // console.log(ms);
   },
 };
 const fp = flatpickr(refs.calendar, options);
@@ -48,6 +49,7 @@ refs.btnStart.addEventListener('click', onBtnStart);
 
 function onBtnStart() {
   // console.log('helo');
+  refs.btnStart.disabled = true;
   setInterval(() => {
     const currentTime = Date.now();
     console.log(currentTime);
@@ -76,11 +78,10 @@ function convertMs(ms) {
   // Remaining minutes
   const minutes = pad(Math.floor(((ms % day) % hour) / minute));
   // Remaining seconds
-  const seconds = pad(Math.floor(((ms % day) % hour) % minute) / second);
-
+  const seconds = pad(Math.floor((((ms % day) % hour) % minute) / second));
   return { days, hours, minutes, seconds };
 }
-
+console.log(convertMs(10120));
 function pad(value) {
   return String(value).padStart(2, '0');
 }
