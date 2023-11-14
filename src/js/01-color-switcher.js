@@ -10,6 +10,7 @@ const refs = {
 refs.btnStart.addEventListener('click', onBtnStart);
 refs.btnStop.addEventListener('click', onBtnStop);
 let timerId = null;
+refs.btnStop.disabled = true;
 
 function onBtnStart() {
   //   console.log(evt);

@@ -2,7 +2,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 let position = 0;
 let delay = 0;
-
+console.log('eha');
 function createPromise(position, delay) {
   return new Promise((res, rej) => {
     const shouldResolve = Math.random() > 0.3;
@@ -26,17 +26,17 @@ const refs = {
 // console.dir(refs.starPromises);
 // console.dir(refs.form);
 refs.starPromises.addEventListener('click', onClick);
-refs.starPromises.disabled = false;
 
 function onClick(evt) {
   evt.preventDefault();
+  refs.starPromises.disabled = true;
 
   const step = Number(refs.stepInput.value);
   const amount = Number(refs.amountInput.value);
   const delayStart = Number(refs.delayInput.value);
 
   for (let i = 0; i < amount; i += 1) {
-    position += 1;
+    position = i + 1;
     delay = delayStart + step * i;
     // console.log(delay);
 
@@ -48,4 +48,6 @@ function onClick(evt) {
         Notify.success(`❌ Rejected promise ${position} in ${delay}ms`);
       });
   }
+  // refs.form.reset();
+  refs.starPromises.disabled = false;
 }
