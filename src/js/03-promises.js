@@ -25,7 +25,7 @@ const refs = {
 };
 // console.dir(refs.starPromises);
 // console.dir(refs.form);
-
+// refs.starPromises.disabled = false;
 refs.starPromises.addEventListener('click', onClick);
 
 function onClick(evt) {
